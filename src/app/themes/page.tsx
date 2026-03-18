@@ -86,7 +86,9 @@ export default function ThemesListPage() {
                   </div>
                 </div>
                 <div className="theme-actions">
-                  <button className="btn-secondary btn-sm" disabled>Edit</button>
+                  <Link href={`/themes/${theme.id}/edit`} className="btn-secondary btn-sm">
+                    Edit
+                  </Link>
                   <button onClick={() => handleDelete(theme.id)} className="btn-danger btn-sm">Delete</button>
                 </div>
               </div>
