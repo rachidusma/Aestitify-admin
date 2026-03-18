@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 interface Theme {
   id: string
@@ -15,6 +16,7 @@ interface Theme {
 }
 
 export default function ThemesListPage() {
+  const router = useRouter()
   const [themes, setThemes] = useState<Theme[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
@@ -86,9 +88,13 @@ export default function ThemesListPage() {
                   </div>
                 </div>
                 <div className="theme-actions">
-                  <Link href={`/themes/${theme.id}/edit`} className="btn-secondary btn-sm">
-                    Edit
-                  </Link>
+                  <button
+                    type="button"
+                    className="btn-secondary btn-sm"
+                    onClick={() => router.push(`/themes/${theme.id}/edit`)}
+                  >
+                    Edit theme
+                  </button>
                   <button onClick={() => handleDelete(theme.id)} className="btn-danger btn-sm">Delete</button>
                 </div>
               </div>
